@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from APIHome import views
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
@@ -10,7 +10,7 @@ router=DefaultRouter()
 router.register('polls',views.PollViewSet,base_name='polls')
                                                                                                     #route poll viewset using router.
 urlpatterns=[
-
+    path('api-auth/', include('rest_framework.urls')),
     path('polls/<int:pk>/choice/',views.ChoiceList.as_view(),name='choice_list'),                               #check choice list
     path('polls/<int:pk>/choice/<int:choice_pk>/',views.ChoiceDetail.as_view(),name='choice_detail'),
     path('polls/<int:pk>/choice/<int:choice_pk>/vote/',views.CreateVote.as_view(),name='create_vote'),          #create vote url

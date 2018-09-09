@@ -3,6 +3,7 @@ from .models import Poll,Choice,Vote
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
+
 #serialize Vote model
 
 class VoteSerializer(serializers.ModelSerializer):

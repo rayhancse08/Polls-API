@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 from django.contrib.auth import authenticate
 from django.shortcuts import get_object_or_404,get_list_or_404
-
+from rest_framework import permissions
 
 # Create your views here.
 
@@ -97,7 +97,7 @@ class UserCreate(generics.CreateAPIView):
 
 
 class LoginView(APIView):
-    permission_classes = ()
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly)
     serializer_class = UserSerializer
 
     def post(self,request):
